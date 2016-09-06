@@ -10,16 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var redView: UIView!
+    @IBOutlet weak var greenView: UIView!
+    @IBOutlet weak var blueView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let redFrameOrigin = redView.convert(redView.frame.origin, to: self.view)
+        print("Red view frame origin should be (16, 28); actually is \(redFrameOrigin).")
+        
+        let greenFrameOrigin = greenView.convert(greenView.frame.origin, to: self.view)
+        print("Green view frame origin should be (16, \(28 + redView.frame.height)); actually is \(greenFrameOrigin).")
+        
+        let blueFrameOrigin = blueView.convert(blueView.frame.origin, to: self.view)
+        print("Red view frame origin should be (\(16 + greenView.frame.width), \(28 + redView.frame.height)); actually is \(blueFrameOrigin).")
     }
-
 
 }
 
